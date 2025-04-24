@@ -68,7 +68,7 @@ export const Header = () => {
             </S.ButtonPainel>
 
             <S.ModalPainel $isOpen={isOpen}>
-              <S.ButtonInPainel onClick={() => navigate("/dashboard")}>
+              <S.ButtonInPainel onClick={() => navigate("/myprofile")}>
                 Meu painel
               </S.ButtonInPainel>
               <S.ButtonInPainel onClick={handleLogout}>Sair</S.ButtonInPainel>
