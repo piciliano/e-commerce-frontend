@@ -1,3 +1,4 @@
+import { BiCart } from "react-icons/bi";
 import { useDeleteProduct } from "../../api/deleteProduct";
 import { getProductsByUserQuery } from "../../api/getProductsInUsersById";
 import { CardProduct } from "../../components/cardProduct";
@@ -26,6 +27,12 @@ export const MyProductsInDashboard = () => {
             />
           ))}
         </S.ProductGrid>
+        {data?.products?.length === 0 && (
+          <S.NoContentContainer>
+            <BiCart size={70} color="#8a2be2" />
+            <S.NoContentText>Você não tem Produto</S.NoContentText>
+          </S.NoContentContainer>
+        )}
       </S.ContainerProducts>
     </S.Container>
   );
