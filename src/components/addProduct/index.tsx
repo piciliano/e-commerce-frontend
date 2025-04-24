@@ -1,22 +1,18 @@
-import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as S from "./styleds";
+import {
+  AddProductFormData,
+  schemaAddProduct,
+} from "../../schemas/addProductSchema";
+import { useAddProduct } from "../../api/addProduct";
+import { Dispatch, SetStateAction } from "react";
 
-const schemaAddProduct = z.object({
-  title: z.string().min(3, "O título deve ter pelo menos 3 caracteres"),
-  description: z
-    .string()
-    .min(5, "A descrição deve ter pelo menos 5 caracteres"),
-  price: z
-    .string()
-    .regex(/^\d+(\.\d{1,2})?$/, "Preço inválido")
-    .min(1, "O preço é obrigatório"),
-});
+interface AddProductProps {
+  setRender: Dispatch<SetStateAction<boolean>>;
+}
 
-export type AddProductFormData = z.infer<typeof schemaAddProduct>;
-
-export const AddProduct = () => {
+export const AddProduct = ({ setRender }: AddProductProps) => {
   const {
     register,
     handleSubmit,
@@ -25,40 +21,79 @@ export const AddProduct = () => {
     resolver: zodResolver(schemaAddProduct),
   });
 
+  const { mutate, isError, isSuccess } = useAddProduct();
+
   const onSubmit = (data: AddProductFormData) => {
-    console.log("Produto adicionado:", data);
+    const productData = {
+      title: data.title,
+      description: data.description,
+      price: data.price.toString(),
+      quantity: Number(data.quantity),
+      category: data.category,
+    };
+
+    mutate(productData);
+
+    setRender(false);
   };
 
   return (
     <S.Container>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <title>Adicionar Produto</title>
+      <S.Form onSubmit={handleSubmit(onSubmit)}>
+        <S.Title>Adicionar Produto</S.Title>
 
-        <div>
-          <input
+        <S.FormGroup>
+          <S.Input
             type="text"
             placeholder="Título do produto"
             {...register("title")}
           />
-          {errors.title && <span>{errors.title.message}</span>}
-        </div>
+          {errors.title && <S.Error>{errors.title.message}</S.Error>}
+        </S.FormGroup>
 
-        <div>
-          <input
+        <S.FormGroup>
+          <S.Input
             type="text"
             placeholder="Descrição do produto"
             {...register("description")}
           />
-          {errors.description && <span>{errors.description.message}</span>}
-        </div>
+          {errors.description && (
+            <S.Error>{errors.description.message}</S.Error>
+          )}
+        </S.FormGroup>
 
-        <div>
-          <input type="text" placeholder="Preço" {...register("price")} />
-          {errors.price && <span>{errors.price.message}</span>}
-        </div>
+        <S.FormGroup>
+          <S.Select {...register("category")}>
+            <S.Option value="">Selecione uma categoria</S.Option>
+            <S.Option value="acessorios">Acessórios</S.Option>
+            <S.Option value="moda">Moda</S.Option>
+            <S.Option value="alimentacao">Alimentação</S.Option>
+            <S.Option value="moda_pet">Moda Pet</S.Option>
+            <S.Option value="games">Games</S.Option>
+            <S.Option value="academia">Academia</S.Option>
+            <S.Option value="eletronicos">Eletrônicos</S.Option>
+          </S.Select>
+          {errors.category && <S.Error>{errors.category.message}</S.Error>}
+        </S.FormGroup>
 
-        <button type="submit">Adicionar Produto</button>
-      </form>
+        <S.FormGroup>
+          <S.Input type="number" placeholder="Preço" {...register("price")} />
+          {errors.price && <S.Error>{errors.price.message}</S.Error>}
+        </S.FormGroup>
+
+        <S.FormGroup>
+          <S.Input
+            type="number"
+            placeholder="Quantidade"
+            {...register("quantity")}
+          />
+          {errors.quantity && <S.Error>{errors.quantity.message}</S.Error>}
+        </S.FormGroup>
+
+        <S.SubmitButton type="submit">Adicionar Produto</S.SubmitButton>
+        {isError && <S.Error>Erro ao adicionar o produto</S.Error>}
+        {isSuccess && <S.Success>Produto adicionado com sucesso!</S.Success>}
+      </S.Form>
     </S.Container>
   );
 };

@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import theme from "../../styles/theme";
 
-type isOpenType = {
-  isOpen: boolean;
+type ModalPainelProps = {
+  $isOpen: boolean;
 };
 
 export const HeaderContainer = styled.div`
@@ -101,7 +101,7 @@ export const ContFlexForButton = styled.div`
   position: relative;
 `;
 
-export const ModalPainel = styled.div<isOpenType>`
+export const ModalPainel = styled.div<ModalPainelProps>`
   width: 10rem;
   position: absolute;
   top: 1.5rem;
@@ -122,7 +122,7 @@ export const ModalPainel = styled.div<isOpenType>`
 
   z-index: 1;
 
-  display: ${({ isOpen }) => (isOpen ? "flex" : "none")};
+  display: ${({ $isOpen }) => ($isOpen ? "flex" : "none")};
 `;
 
 export const ButtonInPainel = styled.button`

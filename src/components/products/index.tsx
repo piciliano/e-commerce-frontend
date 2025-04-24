@@ -21,26 +21,31 @@ export const Products = () => {
             title={product.title}
             price={product.price}
             description={product.description}
+            cartIcon={true}
           />
         ))}
       </S.Container>
 
-      <S.PaginationContainer>
-        <button disabled={page === 1} onClick={() => setPage(page - 1)}>
-          Anterior
-        </button>
+      {(data?.totalPages ?? 0) >= 1 ? (
+        <S.PaginationContainer>
+          <button disabled={page === 1} onClick={() => setPage(page - 1)}>
+            Anterior
+          </button>
 
-        <span>
-          Página {data?.page} de {data?.totalPages}
-        </span>
+          <span>
+            Página {data?.page} de {data?.totalPages}
+          </span>
 
-        <button
-          disabled={page === data?.totalPages}
-          onClick={() => setPage(page + 1)}
-        >
-          Próxima
-        </button>
-      </S.PaginationContainer>
+          <button
+            disabled={page === data?.totalPages}
+            onClick={() => setPage(page + 1)}
+          >
+            Próxima
+          </button>
+        </S.PaginationContainer>
+      ) : (
+        ""
+      )}
     </>
   );
 };

@@ -14,7 +14,6 @@ export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const { data } = getProductsInCartQuery();
-
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -40,6 +39,12 @@ export const Header = () => {
     navigate("/cart");
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    setIsAuthenticated(false);
+    setUserName(null);
+  };
+
   return (
     <S.HeaderContainer>
       <S.ImgHeader
@@ -62,11 +67,11 @@ export const Header = () => {
               <FiChevronDown style={{ color: "#ffffff" }} />
             </S.ButtonPainel>
 
-            <S.ModalPainel isOpen={isOpen}>
+            <S.ModalPainel $isOpen={isOpen}>
               <S.ButtonInPainel onClick={() => navigate("/dashboard")}>
                 Meu painel
               </S.ButtonInPainel>
-              <S.ButtonInPainel>Sair</S.ButtonInPainel>
+              <S.ButtonInPainel onClick={handleLogout}>Sair</S.ButtonInPainel>
             </S.ModalPainel>
           </S.ContFlexForButton>
         ) : (

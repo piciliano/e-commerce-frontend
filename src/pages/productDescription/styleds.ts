@@ -244,3 +244,23 @@ export const CommentAuthor = styled.p`
   margin: 0 0 5px;
   padding-left: 0.2rem;
 `;
+
+export const JustifyDiv = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+export const QuantityInfo = styled.p`
+  color: gray;
+  font-style: italic;
+`;
+
+export const QuantityColor = styled.p`
+  color: rgb(155, 11, 11);
+`;
+
+export const QuantityContainer = styled.div`
+  display: flex;
+  gap: 0.5rem;
+`;

@@ -31,16 +31,30 @@ export interface Product {
   category: Category;
 }
 
-export type ProductResponse = Product[];
+export interface UserWithProducts {
+  id: string;
+  name: string;
+  email: string;
+  password: string;
+  cart: string[];
+  products: Product[];
+}
 
-export const getProductById = async (id: string) => {
-  const response = await apiClient.get<Product>(`/products/${id}`);
-  return response.data;
+export const getProductsByUser = async (): Promise<UserWithProducts> => {
+  try {
+    const response = await apiClient.get<UserWithProducts>(
+      "/users/productsByUser"
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Erro ao buscar produtos:", error);
+    throw error;
+  }
 };
 
-export const getProductByIdQuery = (id: string) => {
+export const getProductsByUserQuery = () => {
   return useQuery({
-    queryKey: ["product", id],
-    queryFn: () => getProductById(id),
+    queryKey: ["productsByUser"],
+    queryFn: getProductsByUser,
   });
 };

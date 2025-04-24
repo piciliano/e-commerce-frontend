@@ -78,4 +78,5 @@ export const ButtonCart = styled.button`
 export const ButtonsContent = styled.div`
   display: flex;
   gap: 5%;
+  justify-content: right;
 `;

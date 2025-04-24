@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import apiClient from "./apiClient";
+import { Category } from "../enums/categoryEnum";
 
 export interface Picture {
   id: string;
@@ -13,6 +14,9 @@ export interface Product {
   description: string;
   price: string;
   pictures: Picture[];
+  quantity: number;
+  userId: string;
+  category: Category;
 }
 
 export interface ProductResponse {

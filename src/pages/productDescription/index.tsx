@@ -3,6 +3,7 @@ import { getProductByIdQuery } from "../../api/getProductById";
 import * as S from "./styleds";
 import { useParams } from "react-router-dom";
 import { useAddProductToCart } from "../../api/addProductToCart";
+import { Comments } from "../../components/comments";
 
 export const ProductDescriptionPage = () => {
   const { id } = useParams();
@@ -56,7 +57,13 @@ export const ProductDescriptionPage = () => {
         </S.ImageContainer>
         <S.InfoContainer>
           <S.Title>{product?.title}</S.Title>
-          <S.Price>Preço: R$ {product?.price}</S.Price>
+          <S.JustifyDiv>
+            <S.Price>Preço: R$ {product?.price}</S.Price>
+            <S.QuantityContainer>
+              <S.QuantityInfo>Restam:</S.QuantityInfo>
+              <S.QuantityColor>{product?.quantity}</S.QuantityColor>
+            </S.QuantityContainer>
+          </S.JustifyDiv>
           <S.Description>{product?.description}</S.Description>
           <S.BuyButton>Comprar agora</S.BuyButton>
           <S.AddToCartButton
@@ -91,6 +98,8 @@ export const ProductDescriptionPage = () => {
         ) : (
           <S.NoComments>Este produto ainda não tem comentários.</S.NoComments>
         )}
+
+        <Comments productId={product!.id} />
       </S.CommentsSection>
     </>
   );

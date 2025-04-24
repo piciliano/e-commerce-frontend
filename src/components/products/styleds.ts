@@ -14,7 +14,7 @@ export const Container = styled.div`
     width: 90%;
   }
 
-  max-width: 1400px; /* Lembrar disto, container dos produtos */
+  max-width: 1400px;
 `;
 
 export const PaginationContainer = styled.div`
