@@ -28,3 +28,23 @@ export const ProductGrid = styled.div`
     gap: 10px 20px;
   }
 `;
+
+export const NoContentContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 75vh;
+  background-color: #f4f4f9;
+  @media (max-width: 768px) {
+    background-color: transparent;
+  }
+`;
+
+export const NoContentText = styled.p`
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
+  margin-top: 10px;
+`;
