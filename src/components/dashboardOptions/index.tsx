@@ -12,9 +12,9 @@ export const DeashBoardOptions = () => {
           <FaHome />
           <S.Text>Início</S.Text>
         </S.Li>
-        <S.Li>
+        <S.Li onClick={() => navigate("/myprofile")}>
           <FaUser />
-          <S.Text onClick={() => navigate("/myprofile")}>Meu Perfil</S.Text>
+          <S.Text>Meu Perfil</S.Text>
         </S.Li>
         <S.Li onClick={() => navigate("/dashboard")}>
           <FaPlus />
