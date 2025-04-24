@@ -1,4 +1,4 @@
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import apiClient from "./apiClient";
 
 type commentData = {
@@ -29,8 +29,15 @@ export const commentRequest = async (
 };
 
 export const useCommentRequest = () => {
+  const queryClient = useQueryClient();
+
   return useMutation({
     mutationFn: ({ id, data }: { id: string; data: commentData }) =>
       commentRequest(id, data),
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ["product"],
+      });
+    },
   });
 };
