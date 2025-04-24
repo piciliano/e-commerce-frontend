@@ -4,6 +4,10 @@ export const Container = styled.div`
   width: 100%;
   display: flex;
   min-height: 100vh;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    width: 100%;
+  }
 `;
 
 export const ContainerProducts = styled.div`
@@ -39,6 +43,7 @@ export const NoContentContainer = styled.div`
   background-color: #f4f4f9;
   @media (max-width: 768px) {
     background-color: transparent;
+    height: 88vh;
   }
 `;
 

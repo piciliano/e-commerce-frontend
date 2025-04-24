@@ -35,6 +35,8 @@ export interface UserWithProducts {
   id: string;
   name: string;
   email: string;
+  phone: string;
+  birth: string;
   password: string;
   cart: string[];
   products: Product[];

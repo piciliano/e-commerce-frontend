@@ -104,13 +104,13 @@ export const MyProfile = () => {
                 <S.Label>
                   Celular<S.ColorRed>*</S.ColorRed>
                 </S.Label>
-                <S.Input name="phone" />
+                <S.Input name="phone" placeholder={data?.phone} />
               </S.FormGroup>
               <S.FormGroup>
                 <S.Label>
                   Nascimento<S.ColorRed>*</S.ColorRed>
                 </S.Label>
-                <S.Input name="age" />
+                <S.Input name="age" placeholder={data?.birth} />
               </S.FormGroup>
               <S.ContentButtons>
                 <S.Button type="submit">

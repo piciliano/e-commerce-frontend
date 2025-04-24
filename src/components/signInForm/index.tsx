@@ -48,6 +48,20 @@ export const SigInForm = () => {
         {errors.email && <span>{errors.email?.message}</span>}
 
         <S.Input
+          {...register("phone")}
+          type="text"
+          placeholder="Digite seu número"
+        />
+        {errors.phone && <span>{errors.phone.message}</span>}
+
+        <S.Input
+          {...register("birth")}
+          type="text"
+          placeholder="Digite sua data de nascimento"
+        />
+        {errors.birth && <span>{errors.birth?.message}</span>}
+
+        <S.Input
           {...register("password")}
           type="password"
           placeholder="Digite sua Senha"

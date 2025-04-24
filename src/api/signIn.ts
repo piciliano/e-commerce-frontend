@@ -10,6 +10,8 @@ type signInData = {
 type signInDataResponse = {
   name: string;
   email: string;
+  phone: string;
+  birth: string;
   cart: [];
 };
 

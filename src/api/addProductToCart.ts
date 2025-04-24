@@ -6,6 +6,8 @@ interface UserCartResponse {
   name: string;
   email: string;
   cart: string[];
+  phone: string;
+  birth: string;
 }
 
 export const addProductToCart = async (

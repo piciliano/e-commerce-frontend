@@ -97,23 +97,23 @@ export const ButtonPainel = styled.button`
 
 export const ContFlexForButton = styled.div`
   display: flex;
-  gap: 0.2rem;
+  gap: 0.1rem;
   position: relative;
+  align-items: center;
 `;
 
 export const ModalPainel = styled.div<ModalPainelProps>`
-  width: 10rem;
   position: absolute;
-  top: 1.5rem;
-  left: 5rem;
+  top: 2rem;
+  left: -1rem;
   display: flex;
-  flex-direction: column;
-  padding: 1rem;
-  gap: 1rem;
+  padding: 0.3rem;
+  gap: 0.3rem;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   border-radius: 12px;
   background: linear-gradient(145deg, #f0f0f0, #d9d9d9);
   transition: all 0.3s ease-in-out;
+  align-items: center;
 
   @media (max-width: 768px) {
     left: 0.1rem;

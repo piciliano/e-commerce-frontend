@@ -18,6 +18,11 @@ export const Ul = styled.ul`
   flex-direction: column;
   margin: 0;
   width: 100%;
+
+  @media (max-width: 768px) {
+    flex-direction: row;
+    gap: 0.09rem;
+  }
 `;
 
 export const Li = styled.li`
@@ -38,6 +43,7 @@ export const Li = styled.li`
 
   @media (max-width: 768px) {
     padding: 0.8rem;
+    width: 30%;
     justify-content: center;
   }
 `;

@@ -5,6 +5,8 @@ interface UserCartResponse {
   id: string;
   name: string;
   email: string;
+  phone: string;
+  birth: string;
   cart: string[];
 }
 

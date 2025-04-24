@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { jwtDecode } from "jwt-decode";
 import { useSearch } from "../../contexts/searchContext";
 import { getProductsInCartQuery } from "../../api/getProductsInCart";
-import { FiChevronDown } from "react-icons/fi";
+import { FiChevronDown, FiLogOut, FiSettings } from "react-icons/fi";
 
 export const Header = () => {
   const [userName, setUserName] = useState<string | null>(null);
@@ -64,14 +64,16 @@ export const Header = () => {
           <S.ContFlexForButton>
             <S.UserName>Olá, {userName}</S.UserName>
             <S.ButtonPainel onClick={() => setIsOpen((prev) => !prev)}>
-              <FiChevronDown style={{ color: "#ffffff" }} />
+              <FiChevronDown size={22} style={{ color: "#ffffff" }} />
             </S.ButtonPainel>
 
             <S.ModalPainel $isOpen={isOpen}>
               <S.ButtonInPainel onClick={() => navigate("/myprofile")}>
-                Meu painel
+                <FiSettings />
               </S.ButtonInPainel>
-              <S.ButtonInPainel onClick={handleLogout}>Sair</S.ButtonInPainel>
+              <S.ButtonInPainel onClick={handleLogout}>
+                <FiLogOut />
+              </S.ButtonInPainel>
             </S.ModalPainel>
           </S.ContFlexForButton>
         ) : (

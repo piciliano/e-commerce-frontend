@@ -4,6 +4,10 @@ export const Container = styled.div`
   display: flex;
   min-height: 100vh;
   background-color: #f4f4f4;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 export const ContRightAddProduct = styled.div`
@@ -20,6 +24,7 @@ export const ContRightAddProduct = styled.div`
   @media (max-width: 768px) {
     display: flex;
     flex-direction: column;
+    width: 100%;
   }
 `;
 
