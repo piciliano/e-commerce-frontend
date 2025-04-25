@@ -164,6 +164,10 @@ export const Button = styled.button`
   }
 
   width: ${({ type }) => (type === "reset" ? "20%" : "80%")};
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 export const ColorRed = styled.p`
@@ -177,5 +181,18 @@ export const ContentButtons = styled.div`
 
   @media (max-width: 768px) {
     gap: 0.3rem;
+  }
+`;
+
+export const EditProfileContainer = styled.div`
+  display: flex;
+  align-items: center;
+  color: #6c1b77;
+  cursor: pointer;
+
+  @media (max-width: 768px) {
+    && span {
+      display: none;
+    }
   }
 `;

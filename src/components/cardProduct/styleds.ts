@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 300px;
+  width: 18.75rem;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -11,12 +11,16 @@ export const Container = styled.div`
   &:hover {
     transform: scale(1.05);
   }
+
+  @media (max-width: 768px) {
+    width: 20rem;
+  }
 `;
 
 export const Image = styled.img`
   width: 100%;
   height: 200px;
-  object-fit: contain;
+  object-fit: cover;
 `;
 
 export const Content = styled.div`
