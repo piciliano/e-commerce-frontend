@@ -9,21 +9,66 @@ import { DashBoard } from "../pages/addProduct";
 import { MyProductsInDashboard } from "../pages/myProducts";
 import { MyProfile } from "../pages/myProfile";
 import { Paymentpage } from "../pages/payment";
+import { PrivateRoute } from "./privateRoute";
 
 export const AppRoutes = () => {
   return (
     <Routes>
       <Route element={<Layout />}>
         <Route path="/" element={<Home />} />
-        <Route path="/products/:id" element={<ProductDescriptionPage />} />
-        <Route path="/cart" element={<CartContent />} />
-        <Route path="/payment/:value" element={<Paymentpage />} />
+        <Route
+          path="/products/:id"
+          element={
+            <PrivateRoute>
+              <ProductDescriptionPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/cart"
+          element={
+            <PrivateRoute>
+              <CartContent />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/payment/:value"
+          element={
+            <PrivateRoute>
+              <Paymentpage />
+            </PrivateRoute>
+          }
+        />
       </Route>
+
       <Route path="/login" element={<Login />} />
       <Route path="/signin" element={<SignIn />} />
-      <Route path="/dashboard" element={<DashBoard />} />
-      <Route path="/myproducts" element={<MyProductsInDashboard />} />
-      <Route path="/myprofile" element={<MyProfile />} />
+
+      <Route
+        path="/dashboard"
+        element={
+          <PrivateRoute>
+            <DashBoard />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/myproducts"
+        element={
+          <PrivateRoute>
+            <MyProductsInDashboard />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/myprofile"
+        element={
+          <PrivateRoute>
+            <MyProfile />
+          </PrivateRoute>
+        }
+      />
     </Routes>
   );
 };

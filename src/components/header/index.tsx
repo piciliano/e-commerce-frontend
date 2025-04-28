@@ -45,6 +45,7 @@ export const Header = () => {
     localStorage.removeItem("token");
     setIsAuthenticated(false);
     setUserName(null);
+    navigate("/");
   };
 
   return (

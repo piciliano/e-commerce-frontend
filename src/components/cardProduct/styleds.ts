@@ -14,6 +14,9 @@ export const Container = styled.div`
 
   @media (max-width: 768px) {
     width: 20rem;
+    &:hover {
+      transform: none;
+    }
   }
 `;
 
@@ -21,6 +24,7 @@ export const Image = styled.img`
   width: 100%;
   height: 200px;
   object-fit: contain;
+  background: white;
 `;
 
 export const Content = styled.div`
