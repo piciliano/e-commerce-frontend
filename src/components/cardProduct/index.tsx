@@ -15,7 +15,7 @@ export const CardProduct = ({
   trashIcon,
   itemId,
 }: any) => {
-  const { mutate, data, error } = useAddProductToCart();
+  const { mutate } = useAddProductToCart();
   const { mutate: deleteProduct } = useDeleteProduct();
 
   const navigate = useNavigate();

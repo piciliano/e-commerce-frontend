@@ -1,13 +1,15 @@
-import { useState } from "react";
+import { use, useState } from "react";
 import { getProductByIdQuery } from "../../api/getProductById";
 import * as S from "./styleds";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useAddProductToCart } from "../../api/addProductToCart";
 import { Comments } from "../../components/comments";
 
 export const ProductDescriptionPage = () => {
   const { id } = useParams();
   const [selectedImage, setSelectedImage] = useState(0);
+
+  const navigate = useNavigate();
 
   const { mutate } = useAddProductToCart();
 
@@ -65,7 +67,9 @@ export const ProductDescriptionPage = () => {
             </S.QuantityContainer>
           </S.JustifyDiv>
           <S.Description>{product?.description}</S.Description>
-          <S.BuyButton>Comprar agora</S.BuyButton>
+          <S.BuyButton onClick={() => navigate(`/payment/${product?.price}`)}>
+            Comprar agora
+          </S.BuyButton>
           <S.AddToCartButton
             onClick={() => {
               if (product?.id) {

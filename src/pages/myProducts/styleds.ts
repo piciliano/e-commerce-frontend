@@ -13,7 +13,6 @@ export const Container = styled.div`
 export const ContainerProducts = styled.div`
   background-color: #f4f4f4;
   width: 100%;
-  height: 93.5vh;
 `;
 
 export const ProductGrid = styled.div`

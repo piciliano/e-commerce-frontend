@@ -25,15 +25,11 @@ export const AddProduct = ({ setRender }: AddProductProps) => {
 
   const onSubmit = (data: AddProductFormData) => {
     const productData = {
-      title: data.title,
-      description: data.description,
-      price: data.price.toString(),
+      ...data,
+      price: data.price.replace(",", "."),
       quantity: Number(data.quantity),
-      category: data.category,
     };
-
     mutate(productData);
-
     setRender(false);
   };
 
@@ -77,7 +73,12 @@ export const AddProduct = ({ setRender }: AddProductProps) => {
         </S.FormGroup>
 
         <S.FormGroup>
-          <S.Input type="number" placeholder="Preço" {...register("price")} />
+          <S.Input
+            type="text"
+            inputMode="decimal"
+            placeholder="Preço (ex: 19,99)"
+            {...register("price")}
+          />
           {errors.price && <S.Error>{errors.price.message}</S.Error>}
         </S.FormGroup>
 

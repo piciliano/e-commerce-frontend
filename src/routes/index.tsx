@@ -8,6 +8,7 @@ import { SignIn } from "../pages/signin";
 import { DashBoard } from "../pages/addProduct";
 import { MyProductsInDashboard } from "../pages/myProducts";
 import { MyProfile } from "../pages/myProfile";
+import { Paymentpage } from "../pages/payment";
 
 export const AppRoutes = () => {
   return (
@@ -16,6 +17,7 @@ export const AppRoutes = () => {
         <Route path="/" element={<Home />} />
         <Route path="/products/:id" element={<ProductDescriptionPage />} />
         <Route path="/cart" element={<CartContent />} />
+        <Route path="/payment/:value" element={<Paymentpage />} />
       </Route>
       <Route path="/login" element={<Login />} />
       <Route path="/signin" element={<SignIn />} />

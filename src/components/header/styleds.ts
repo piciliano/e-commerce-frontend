@@ -5,6 +5,10 @@ type ModalPainelProps = {
   $isOpen: boolean;
 };
 
+type ValidationInput = {
+  $validation: boolean;
+};
+
 export const HeaderContainer = styled.div`
   display: flex;
   align-items: center;
@@ -21,15 +25,21 @@ export const ImgHeader = styled.img`
   width: 70px;
 `;
 
-export const InputHeader = styled.input`
+export const InputHeader = styled.input<ValidationInput>`
   border: 1px solid gray;
   padding: 0.4rem 2rem 0.4rem 0.6rem;
   border-radius: 6px;
   font-size: 1rem;
   background-color: #fff;
   outline: none;
-  transition: 0.3s ease-in-out;
   width: 30%;
+  transition: all 0.3s ease-in-out;
+
+  opacity: ${({ $validation }) => ($validation ? 1 : 0)};
+  transform: ${({ $validation }) =>
+    $validation ? "scaleY(1)" : "scaleY(0.9)"};
+  pointer-events: ${({ $validation }) => ($validation ? "all" : "none")};
+  position: ${({ $validation }) => ($validation ? "static" : "absolute")};
 
   background-image: url("https://cdn-icons-png.flaticon.com/512/622/622669.png");
   background-size: 18px;

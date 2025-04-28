@@ -47,7 +47,7 @@ export const MainImageWrapper = styled.div`
 export const MainImage = styled.img`
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 `;
 
 export const Thumbnails = styled.div`
@@ -263,4 +263,43 @@ export const QuantityColor = styled.p`
 export const QuantityContainer = styled.div`
   display: flex;
   gap: 0.5rem;
+`;
+
+export const Modal = styled.div`
+  position: fixed;
+  z-index: 10;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
+  justify-content: center;
+  align-items: center;
+`;
+
+export const ContentModal = styled.div`
+  width: 30%;
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  position: relative;
+  animation: fadeInUp 1s normal;
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(100vh);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 768px) {
+    width: 90%;
+  }
 `;

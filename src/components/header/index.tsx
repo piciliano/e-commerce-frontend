@@ -1,6 +1,6 @@
 import * as S from "./styleds";
 import ImgHeader from "../../images/ecommerceHD.png";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { jwtDecode } from "jwt-decode";
 import { useSearch } from "../../contexts/searchContext";
@@ -12,6 +12,8 @@ export const Header = () => {
   const { searchQuery, setSearchQuery } = useSearch();
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
+  const isHomePage = location.pathname === "/";
 
   const { data } = getProductsInCartQuery();
   const navigate = useNavigate();
@@ -58,6 +60,7 @@ export const Header = () => {
         placeholder="Buscar"
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
+        $validation={isHomePage}
       />
       <S.UserContainer>
         {userName ? (

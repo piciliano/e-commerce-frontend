@@ -6,7 +6,13 @@ export const schemaAddProduct = z.object({
   description: z
     .string()
     .min(10, "A descrição deve ter pelo menos 10 caracteres."),
-  price: z.string().regex(/^\d+(\.\d{1,2})?$/, "Digite um preço válido."),
+  price: z
+    .string()
+    .regex(/^\d+([,.]\d{1,2})?$/, "Digite um preço válido (ex: 15,90 ou 15.90)")
+    .refine((val) => {
+      const decimalPart = val.split(/[,.]/)[1];
+      return !decimalPart || decimalPart.length <= 2;
+    }, "O preço deve ter no máximo 2 casas decimais"),
   quantity: z.coerce
     .number()
     .int("A quantidade deve ser um número inteiro.")
